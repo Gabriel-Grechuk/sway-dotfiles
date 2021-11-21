@@ -1,3 +1,2 @@
-# COSMIC PURPLE THEME 🪄🖥️💜🌠✨
+# COSMIC PURPLE THEME 🖥💜🌌🌠✨
 ## A Sway Rice By Gabe
-
