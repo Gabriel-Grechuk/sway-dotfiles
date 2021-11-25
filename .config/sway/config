@@ -19,16 +19,23 @@ set $term alacritty
 set $menu dmenu_path | dmenu | xargs swaymsg exec --
 
 
-##########################
-# Keyboard configuration #
-##########################
-include /etc/sway/config.d/*
+#########################
+# Devices configuration #
+#########################
 
 input "type:keyboard" {
 	xkb_layout br
 	xkb_variant abnt2
 	xkb_model abnt2
 }
+
+input "type:touchpad" {
+    tap enabled
+    natural_scroll enabled
+}
+
+# Systemd whatever.
+include /etc/sway/config.d/*
 
 
 ################
@@ -135,22 +142,22 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 
-#####################
-# Temporary swaybar #
-#####################
-#bar {
-#    position top
-#
-#    # When the status_command prints a new line to stdout, swaybar updates.
-#    # The default just shows the current date and time.
-#    status_command while date +'%Y-%m-%d %l:%M:%S %p'; do sleep 1; done
-#
-#    colors {
-#        statusline #ffffff
-#        background #323232
-#        inactive_workspace #32323200 #32323200 #5c5c5c
-#    }
-#}
+###########################################
+# Windows to their respective workspaces. #
+###########################################
+# Firefox.
+assign [class="firefox"] workspace 2
+
+# Steam.
+for_window [class="Steam"] floating enable
+assign [class="Steam"] workspace 6
+
+# Gimp.
+assign [class="gimp"] workspace 4
+
+# Telegram
+assign [app_id="telegramdesktop"] workspace 9
+
 
 
 ###########################
@@ -167,8 +174,8 @@ hide_edge_borders smart
 # +--------------------+--------+----------+----------+-----------+--------------+
 # | class              | border |  backgr  |  text    | indicator | child_border |
 # +--------------------+--------+----------+----------+-----------+--------------+
-client.focused          #9b73a3   #9b73a3   #ffffff     #2e9ef4     #9b73a3
-client.focused_inactive #9b73a3   #9b73a3   #ffffff     #484e50     #9b73a3
+client.focused          #774187   #774187   #ffffff     #2e9ef4     #774187
+client.focused_inactive #774187   #774187   #ffffff     #484e50     #774187
 client.unfocused        #595959   #595959   #ffffffAA   #292d2e     #595959
 client.urgent           #2f343a   #900000   #ffffff     #900000     #900000
 client.placeholder      #000000   #0c0c0c   #ffffff     #000000     #0c0c0c
@@ -178,15 +185,27 @@ client.background       #ffffff
 ########################
 # Startup Applications #
 ########################
-# Define the wallpaper.
-output * bg ~/Wallpaper/PurpleSky.jpg fill
 
-# Waybar.
+# Sway stuff
+## Define the wallpaper.
+output * bg ~/Wallpapers/PurpleLandscape.jpg fill
+
+## Waybar.
 exec --no-startup-id waybar
 
-# With this I can get root privilege when running gui applications. 
+## With this I can get root privilege when running gui applications. 
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
-# Music server.
+## Music server.
 exec --no-startup-id mpd
+
+# Programs that I like at startup.
+## Steam.
+exec steam
+
+## Firefox.
+exec firefox
+
+## Telegram.
+exec telegram-desktop
 

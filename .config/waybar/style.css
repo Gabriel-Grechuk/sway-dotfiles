@@ -1,0 +1,62 @@
+* {
+    font-family:  'Arial', 'Droid Sans Mono Nerd Font', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: rgb(246, 235, 255);
+}
+
+window#waybar {
+    /* For some reason I need to define the color for transparent gradient to work*/ 
+    background-color: rgba(45, 37, 51, 0.75);
+    background-image: linear-gradient(rgba(45, 37, 51, 1), rgba(45, 37, 51, 0));
+}
+
+
+#workspaces button {
+    border: none;
+    padding: 0px 11px;
+    border-radius: 0;
+    background-color: rgba(119, 65, 135, 0.75);
+    background-image: linear-gradient(rgba(119, 65, 135, 1), rgba(119, 65, 135, 0));
+    color: rgb(118, 149, 179);
+}
+
+
+#workspaces button.focused {
+    background-color: rgb(118, 149, 179);
+    background-image: none; 
+}
+
+#window {
+    margin: 0px 10px;
+    font-size: 14px;
+}
+
+#cpu, 
+#memory, 
+#disk, 
+#network, 
+#pulseaudio, 
+#battery,
+#clock {
+    margin: 0px 5px;
+    padding: 0px 5px;
+    border-bottom: solid 3px #cb49f2;
+}
+
+#battery.charging {
+    color: white;
+    background-color: rgb(38, 166, 91);
+    border: none;
+}
+
+#battery.warning:not(.charging) {
+    color: white;
+    background-color: rgb(245, 60, 60);
+    border: none;
+}
+
+#tray {
+    margin: 0px 5px;
+    border: none;
+} 
